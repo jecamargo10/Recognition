@@ -3,11 +3,35 @@
   <head>
     <meta charset="utf-8">
     <title>Mis medicamentos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </head>
   <body>
-<h2>Esperando Reconocimiento Facial</h2>
-<div class="paciente"><p></div>
-  <div class="medicamentos"><p></div>
+    <div id="container" class="container">
+      <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6" style="width: 50%; margin: 0 auto; text-align: center" id="tocenter">
+
+        <h2 id="rec">Esperando Reconocimiento Facial</h2>
+<br>
+<div id="loader" class="loader"></div>
+
+        <div class="paciente"><h3></div>
+<br>
+        <div class="medicamentos"><p></div>
+<br>
+          <img id="people" src="https://objectstorage.us-ashburn-1.oraclecloud.com/n/proyectoantonia/b/demo_data/o/DiegoCasas.jpg" hidden=true width="200" height="200">
+<br>
+        </div>
+        <div class="col-3">
+        </div>
+      </div>
+    </div>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -38,9 +62,14 @@
         success: function(data){
         //alert(data);
         console.log(data)
-        $(".paciente").append("<P>"+data.paciente);
-          $(".medicamentos").append("<P>"+data.medicamentos);
+        $(".paciente").append("<h5>"+"Nombre: "+data.paciente);
+          $(".medicamentos").append("<h5>"+"Medicamentos: "+data.medicamentos);
+          document.getElementById("rec").innerHTML = "Paciente Reconocido Exitosamente";
+          document.getElementById("people").hidden = false;
+          document.getElementById("loader").hidden = true;
 
+
+//https://objectstorage.us-ashburn-1.oraclecloud.com/n/proyectoantonia/b/demo_data/o/DiegoCasas.jpg
 
         }
 
@@ -59,6 +88,44 @@
 
 });
 </script>
+
+<style>
+
+.container {
+    background:white;
+}
+
+
+body {
+	background-image: url("https://www.sheffield.ac.uk/polopoly_fs/1.765792!/image/tablets-785.jpg");
+        background-repeat:no-repeat;
+       background-size:cover;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  margin:10px auto;
+
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+
   </body>
 
 </html>

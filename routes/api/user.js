@@ -8,6 +8,8 @@ module.exports = function (router) {
     router.post("/changeStatus", UserController.changeStatus);
     router.get("/revert", UserController.revert);
     router.post("/changeFormula", UserController.changeFormula);
+    router.get("/getFormula", UserController.getFormula);
+
 
 
 

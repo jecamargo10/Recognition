@@ -12,6 +12,10 @@ let formula = "";
 exports.getStatus = function (req, res) {
 return  res.json(fileScope);
 };
+exports.getFormula = function (req, res) {
+return  res.json(formula);
+};
+
 exports.changeStatus = function (req, res) {
   console.log(req.body.stuff)
     fileScope = req.body.stuff

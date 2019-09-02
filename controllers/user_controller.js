@@ -22,7 +22,7 @@ exports.revert = function (req, res) {
     return res.send(fileScope);
 };
 exports.changeFormula = function (req, res) {
-    formula = req.body.stuff
+    formula = req.body
     return res.send(formula);
 };
 

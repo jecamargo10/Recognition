@@ -1,1 +1,64 @@
-Backend working
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mis medicamentos</title>
+  </head>
+  <body>
+<h2>Esperando Reconocimiento Facial</h2>
+<div class="paciente"><p></div>
+  <div class="medicamentos"><p></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+  $( document ).ready(function() {
+    console.log( "ready!" );
+
+    var tid = setInterval(mycode, 2000);
+    function mycode() {
+      $.ajax({
+      type: "GET",
+      dataType: "text",
+      url: "https://magicrecognitionjavidiego.herokuapp.com/api/status",
+      success: function(data){
+      //alert(data);
+      console.log(data)
+      if (data.replace(/['"]+/g, '') !== "false" )
+      {
+      stuf = true
+      console.log(data)
+
+      abortTimer()
+
+        $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "https://magicrecognitionjavidiego.herokuapp.com/api/getFormula",
+        success: function(data){
+        //alert(data);
+        console.log(data)
+        $(".paciente").append("<P>"+data.paciente);
+          $(".medicamentos").append("<P>"+data.medicamentos);
+
+
+        }
+
+        });
+      }
+
+      }
+
+      });
+      // do some stuff...
+      // no need to recall the function (it's an interval, it'll loop forever)
+    }
+    function abortTimer() { // to be called when you want to stop the timer
+      clearInterval(tid);
+    }
+
+});
+</script>
+  </body>
+
+</html>

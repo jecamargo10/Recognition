@@ -23,7 +23,7 @@
         <div class="medicamentos"><p></div>
           <br>
 
-          <img id="people" src="https://objectstorage.us-ashburn-1.oraclecloud.com/n/proyectoantonia/b/demo_data/o/UDiegoCasas.jpg" hidden=true width="200" height="200">
+          <img id="people"  hidden=true width="200" height="200">
 <br>
 <br>
 <button type="button" id="btn" class="btn btn-primary" hidden=true  onClick="delivery()">Orden Entregada</button>
@@ -95,6 +95,7 @@ function delivery()
         $(".paciente").append("<h4>"+"Nombre:<h4> <h5><br>"+data.paciente);
           $(".medicamentos").append("<h4>"+"Medicamentos:</h4> <h5><br>"+data.medicamentos);
           document.getElementById("rec").innerHTML = "Paciente Reconocido Exitosamente";
+          document.getElementById("people").src = "https://objectstorage.us-ashburn-1.oraclecloud.com/n/proyectoantonia/b/demo_data/o/U"+data.paciente+".jpg";
           document.getElementById("people").hidden = false;
           document.getElementById("loader").hidden = true;
           document.getElementById("btn").hidden = false;
